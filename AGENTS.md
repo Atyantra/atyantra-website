@@ -4,7 +4,8 @@ New marketing/product website for Atyantra (parent org building AutoNaaS). Fresh
 
 ## Read before building
 1. [DESIGN.md](DESIGN.md) — design system, typography, color, motion rules
-2. [README.md](README.md) — stack, setup, deploy
+2. [SKILLS.md](SKILLS.md) — installed skill roster, when to use each, recommended build flow
+3. [README.md](README.md) — stack, setup, deploy
 
 ## Stack (default — confirm before deviating)
 Next.js (latest, breaking changes vs training data — check `node_modules/next/dist/docs/` before writing framework code), TypeScript, Tailwind.
