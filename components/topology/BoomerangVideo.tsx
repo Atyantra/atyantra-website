@@ -2,7 +2,7 @@
 import type { JSX } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
-type Frame = ImageBitmap | HTMLCanvasElement
+type Frame = HTMLCanvasElement
 
 const MAX_CAPTURE_WIDTH = 960
 const PLAYBACK_INTERVAL = 1000 / 30
@@ -64,6 +64,7 @@ export function BoomerangVideo({
       const frameCtx = frameCanvas.getContext('2d')
       if (!frameCtx) return
       frameCtx.drawImage(offscreen, 0, 0)
+      // TODO(blocking): cap frame count before NEXT_PUBLIC_HERO_VIDEO_URL is set — unbounded 30fps canvases = memory exhaustion on a multi-second clip.
       framesRef.current.push(frameCanvas)
     }
 
@@ -127,12 +128,12 @@ export function BoomerangVideo({
     }
 
     const onEnded = (): void => {
+      captureFrame()
       stopped = true
       if (rafId !== null) window.cancelAnimationFrame(rafId)
       if (rvfcId !== null && typeof video.cancelVideoFrameCallback === 'function') {
         video.cancelVideoFrameCallback(rvfcId)
       }
-      captureFrame()
       stopped = false
       startPlayback()
     }

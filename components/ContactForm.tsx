@@ -45,7 +45,7 @@ export function ContactForm({ to }: { to: string }) {
           required
           className={field}
           value={f.email}
-          aria-describedby="email-error"
+          aria-describedby={emailShowsError ? 'email-error' : undefined}
           aria-invalid={emailShowsError}
           onBlur={() => setTouchedEmail(true)}
           onChange={(e) => setF({ ...f, email: e.target.value })}
