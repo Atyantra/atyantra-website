@@ -7,6 +7,6 @@ describe('About', () => {
   it('renders mission, story, and founder sections', () => {
     render(<About />)
     expect(screen.getByText('ABOUT')).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /mission/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Our mission' })).toBeInTheDocument()
   })
 })

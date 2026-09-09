@@ -35,6 +35,10 @@ Copy `.env.example` to `.env.local`. All vars are optional:
 - `NEXT_PUBLIC_HERO_VIDEO_URL` — when set to an MP4 URL, the home hero swaps the
   coded SVG topology graph for the boomerang video.
 
+### MCP
+
+Copy `.mcp.json.example` to `.mcp.json` and fill in the Higgsfield key to enable video generation.
+
 ## Deploy
 
 Push to a branch → Vercel auto-builds (framework auto-detected, no `vercel.json`
