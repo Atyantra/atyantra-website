@@ -16,7 +16,7 @@ export function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-sm text-ink-muted transition-colors duration-200 hover:text-ink"
+                className="rounded-sm text-sm text-ink-muted transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
               >
                 {l.label}
               </Link>

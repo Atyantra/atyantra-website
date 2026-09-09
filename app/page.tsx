@@ -79,7 +79,9 @@ export default function Home(): JSX.Element {
         id="how-it-works"
         className="scroll-mt-24 border-t border-hairline px-6 py-24 sm:px-10 md:px-14 md:py-36"
       >
-        <MetaLabel>How it works</MetaLabel>
+        <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-ink-faint">
+          How it works
+        </h2>
         <div className="mt-8">
           {pillars.map((p, i) => (
             <PillarCard

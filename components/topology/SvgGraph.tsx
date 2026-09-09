@@ -35,7 +35,7 @@ export function SvgGraph(props: { animate: boolean }): JSX.Element {
             x2={toNode.x}
             y2={toNode.y}
             stroke="var(--ink)"
-            strokeOpacity="0.15"
+            strokeOpacity="0.08"
             strokeWidth="1"
           />
         )
@@ -49,14 +49,14 @@ export function SvgGraph(props: { animate: boolean }): JSX.Element {
           cy={node.y}
           r={node.core ? 8 : 5}
           fill="var(--ink)"
-          opacity={node.core ? 0.8 : 0.5}
+          opacity={node.core ? 0.28 : 0.16}
         />
       ))}
 
       {/* Pulse animation */}
       {props.animate && (
         <g data-pulse>
-          <circle r="4" fill="var(--accent)" opacity="0.8">
+          <circle r="4" fill="var(--accent)" opacity="0.35">
             <animateMotion dur="6s" repeatCount="indefinite" path={motionPathD} />
           </circle>
         </g>

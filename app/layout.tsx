@@ -36,8 +36,9 @@ export default function RootLayout({
       className={`${inter.variable} ${newsreader.variable}`}
     >
       <body className="bg-ground text-ink font-sans antialiased">
+        <a href="#main" className="skip-link">Skip to content</a>
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

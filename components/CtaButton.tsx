@@ -11,7 +11,7 @@ export function CtaButton({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center rounded-lg bg-ink font-medium text-white transition-colors duration-200 hover:bg-ink/90 ${sizes[size]} ${className}`}
+      className={`inline-flex items-center rounded-lg bg-ink font-medium text-white transition-colors duration-200 hover:bg-ink/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${sizes[size]} ${className}`}
     >
       {children}
     </Link>
