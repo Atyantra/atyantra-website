@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { MetaLabel } from '@/components/MetaLabel'
 import { whitepaper } from '@/content/whitepaper'
 
-export const metadata: Metadata = { title: 'Technical Whitepaper — Atyantra' }
+export const metadata: Metadata = {
+  title: 'Technical Whitepaper — Atyantra',
+  description: 'The AutoNaaS architecture paper — an in-depth look at the autonomous network operations platform. Coming soon.',
+}
 
 export default function Whitepaper() {
   return (

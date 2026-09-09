@@ -19,10 +19,16 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
+const title = "Atyantra — Remove the ceiling on network operations";
+const description =
+  "AutoNaaS is an AI-native NOC engineering platform: autonomous discovery, diagnosis, and change preparation across the full ITIL lifecycle, with human authorization as the immutable control point.";
+
 export const metadata: Metadata = {
-  title: "Atyantra — Remove the ceiling on network operations",
-  description:
-    "AutoNaaS is an AI-native NOC engineering platform: autonomous discovery, diagnosis, and change preparation across the full ITIL lifecycle, with human authorization as the immutable control point.",
+  metadataBase: new URL("https://atyantra.io"),
+  title,
+  description,
+  openGraph: { title, description, type: "website", siteName: "Atyantra" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function RootLayout({

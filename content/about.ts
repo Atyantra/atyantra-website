@@ -2,7 +2,8 @@
 
 export const about = {
   kicker: 'ABOUT',
-  mission: '[Vision and values — TODO]',
+  headline: '[About headline — TODO]',
+  mission: '[Mission statement — TODO]',
   story: [
     '[Story paragraph 1 — TODO]',
     '[Story paragraph 2 — TODO]',

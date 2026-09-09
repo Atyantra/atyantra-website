@@ -3,7 +3,10 @@ import { MetaLabel } from '@/components/MetaLabel'
 import { ContactForm } from '@/components/ContactForm'
 import { contact } from '@/content/contact'
 
-export const metadata: Metadata = { title: 'Talk to Us — Atyantra' }
+export const metadata: Metadata = {
+  title: 'Talk to Us — Atyantra',
+  description: 'Talk to the Atyantra team about your network estate and how AutoNaaS fits your operations.',
+}
 
 export default function Contact() {
   return (

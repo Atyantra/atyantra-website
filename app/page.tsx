@@ -1,4 +1,5 @@
 import type { JSX } from 'react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { TopologyHero } from '@/components/TopologyHero'
@@ -10,9 +11,15 @@ import { FeatureRow } from '@/components/FeatureRow'
 import { hero, problem, problemRows, gap, platform, whitepaperTeaser, homeCta } from '@/content/home'
 import { pillars } from '@/content/pillars'
 
+export const metadata: Metadata = {
+  title: 'Atyantra — Remove the ceiling on network operations',
+  description:
+    'AutoNaaS is an AI-native NOC engineering platform — an autonomous operations layer that discovers, diagnoses, and prepares network changes end-to-end across the ITIL lifecycle.',
+}
+
 export default function Home(): JSX.Element {
   return (
-    <>
+    <div className="min-h-screen overflow-x-hidden">
       <section className="relative flex h-screen flex-col items-center overflow-hidden">
         <TopologyHero />
         <div className="z-10 flex flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28 md:pt-32">
@@ -58,7 +65,7 @@ export default function Home(): JSX.Element {
         </div>
       </section>
 
-      <section className="px-6 py-24 sm:px-10 md:px-14 md:py-36">
+      <section id="the-gap" className="scroll-mt-24 px-6 py-24 sm:px-10 md:px-14 md:py-36">
         <blockquote className="max-w-4xl font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl md:text-5xl">
           {gap.quote}
         </blockquote>
@@ -96,7 +103,10 @@ export default function Home(): JSX.Element {
         </div>
       </section>
 
-      <section className="border-t border-hairline px-6 py-16 sm:px-10 md:px-14">
+      <section
+        id="whitepaper-teaser"
+        className="scroll-mt-24 border-t border-hairline px-6 py-16 sm:px-10 md:px-14"
+      >
         <Link href={whitepaperTeaser.href} className="group flex items-center justify-between">
           <span>
             <MetaLabel>{whitepaperTeaser.kicker}</MetaLabel>
@@ -114,6 +124,6 @@ export default function Home(): JSX.Element {
           {homeCta.cta.label}
         </CtaButton>
       </section>
-    </>
+    </div>
   )
 }
