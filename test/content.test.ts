@@ -23,7 +23,7 @@ describe('content', () => {
     expect(problem.kicker).toBe('THE PROBLEM')
     expect(problem.body).toContain('capped by headcount rather than capability')
     expect(gap.quote).toBe('Ticketing systems record what should happen. They do not diagnose, prepare, or act.')
-    expect(platform.body).toContain('human authorization')
+    expect(platform.body).toContain('Human authorization')
   })
   it('exactly three pillars with stable ids', () => {
     expect(pillars).toHaveLength(3)
