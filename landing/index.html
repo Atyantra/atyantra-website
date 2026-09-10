@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- fixed background: video + progressive darkening scrim -->
   <div class="bg" aria-hidden="true">
     <video class="bg-video" autoplay muted loop playsinline preload="auto">
       <source
@@ -49,21 +50,23 @@
         type="video/mp4"
       />
     </video>
+    <div class="bg-scrim"></div>
   </div>
 
-  <div class="page">
-    <!-- 1) HEADER -->
-    <header class="header">
-      <a class="logo" href="#" aria-label="Home">
-        <!-- swap for assets/logo.webp when supplied -->
+  <a class="skip-link" href="#problem">Skip to content</a>
+
+  <!-- persistent header -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="AutoNaaS — home">
         <img src="assets/logo.svg" alt="" width="52" height="52" />
       </a>
 
       <nav class="nav" aria-label="Primary">
-        <a class="nav-link is-active" href="#" aria-current="page">Home</a>
-        <a class="nav-link" href="#">Platform</a>
-        <a class="nav-link" href="#">How It Works</a>
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link is-active" href="#top" aria-current="page">Home</a>
+        <a class="nav-link" href="#platform">Platform</a>
+        <a class="nav-link" href="#how-it-works">How It Works</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </nav>
 
       <a class="sign-in" href="#">Sign in</a>
@@ -75,68 +78,195 @@
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <span class="burger-bars" aria-hidden="true">
-          <i></i><i></i><i></i>
-        </span>
+        <span class="burger-bars" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
-    </header>
+    </div>
+  </header>
 
-    <!-- 2) HERO -->
-    <main class="hero">
-      <div class="trust anim" style="--d: 0.05s">
-        <span class="avatar a1"><i class="fa-brands fa-microsoft" aria-hidden="true"></i></span>
-        <span class="avatar a2"><i class="fa-brands fa-amazon" aria-hidden="true"></i></span>
-        <span class="avatar a3"><i class="fa-brands fa-google" aria-hidden="true"></i></span>
-        <span class="trust-pill">Trusted by enterprise NOC teams</span>
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero-section">
+      <div class="hero">
+        <div class="trust anim" style="--d: 0.05s">
+          <span class="avatar a1"><i class="fa-brands fa-microsoft" aria-hidden="true"></i></span>
+          <span class="avatar a2"><i class="fa-brands fa-amazon" aria-hidden="true"></i></span>
+          <span class="avatar a3"><i class="fa-brands fa-google" aria-hidden="true"></i></span>
+          <span class="trust-pill">Trusted by enterprise NOC teams</span>
+        </div>
+
+        <!-- headline itself does not reveal; each .line fades in on its own delay -->
+        <h1 class="headline">
+          <span class="line l1">Remove The Ceiling</span>
+          <span class="line l2">On Network Ops</span>
+        </h1>
+
+        <p class="subhead anim" style="--d: 0.28s">
+          An AI-native platform that discovers, diagnoses and prepares network
+          changes end to end &mdash; released on your authorization.
+        </p>
+
+        <a class="cta" href="#contact" style="--d: 0.4s">Talk to Us</a>
       </div>
 
-      <!-- headline itself does not reveal; each .line fades in on its own delay -->
-      <h1 class="headline">
-        <span class="line l1">Remove The Ceiling</span>
-        <span class="line l2">On Network Ops</span>
-      </h1>
+      <div class="stats">
+        <div class="stat anim" style="--d: 0.5s">
+          <span class="stat-icon" aria-hidden="true">&lt;</span>
+          <span class="stat-value" data-target="90" data-suffix="s" data-decimals="0">90s</span>
+          <span class="stat-label">Time To Diagnosis</span>
+        </div>
+        <div class="stat anim" style="--d: 0.58s">
+          <span class="stat-icon" aria-hidden="true">%</span>
+          <span class="stat-value" data-target="99.99" data-suffix="%" data-decimals="2">99.99%</span>
+          <span class="stat-label">Change Success Rate</span>
+        </div>
+        <div class="stat anim" style="--d: 0.66s">
+          <span class="stat-icon" aria-hidden="true">*</span>
+          <span class="stat-value" data-target="24" data-suffix="/7" data-decimals="0">24/7</span>
+          <span class="stat-label">Autonomous Coverage</span>
+        </div>
+        <div class="stat anim" style="--d: 0.74s">
+          <span class="stat-icon" aria-hidden="true">#</span>
+          <span class="stat-value" data-target="100" data-suffix="K" data-decimals="0">100K</span>
+          <span class="stat-label">Devices Per Tenant</span>
+        </div>
+      </div>
 
-      <p class="subhead anim" style="--d: 0.28s">
-        An AI-native platform that discovers, diagnoses and prepares network
-        changes end to end &mdash; released on your authorization.
-      </p>
+      <span class="scroll-cue" aria-hidden="true">
+        <span class="scroll-cue-label">Scroll</span>
+        <span class="scroll-cue-line"></span>
+      </span>
+    </section>
 
-      <a class="cta" href="#" style="--d: 0.4s">Talk to Us</a>
-    </main>
+    <!-- ============ THE PROBLEM ============ -->
+    <section class="section" id="problem">
+      <div class="block reveal">
+        <p class="kicker">The Problem</p>
+        <h2 class="section-head">Operations that scale with capability, not headcount</h2>
+        <p class="section-body">
+          Enterprise network operations remain fundamentally manual &mdash;
+          human-executed CLI workflows, tribal runbook knowledge, and fragmented
+          ITSM tooling. As estates scale into the tens or hundreds of thousands of
+          endpoints, MTTR degrades, operational risk compounds, and organizations
+          are capped by headcount rather than capability.
+        </p>
+      </div>
+    </section>
 
-    <!-- 3) STATS -->
-    <footer class="stats">
-      <div class="stat anim" style="--d: 0.5s">
-        <span class="stat-icon" aria-hidden="true">&lt;</span>
-        <span class="stat-value" data-target="90" data-suffix="s" data-decimals="0">90s</span>
-        <span class="stat-label">Time To Diagnosis</span>
+    <!-- ============ THE GAP ============ -->
+    <section class="section section--quote" id="gap">
+      <div class="block reveal">
+        <blockquote class="pull-quote">
+          Ticketing systems record what should happen. They do not diagnose,
+          prepare, or act.
+        </blockquote>
+        <p class="section-body">
+          Today&rsquo;s incumbent approach pairs manual device-level operations
+          with disconnected ITSM platforms that log intent but never execute it.
+          The result is an operational gap &mdash; full accountability for
+          outcomes, without automation of the underlying work &mdash; that legacy
+          tooling has never closed.
+        </p>
       </div>
-      <div class="stat anim" style="--d: 0.58s">
-        <span class="stat-icon" aria-hidden="true">%</span>
-        <span class="stat-value" data-target="99.99" data-suffix="%" data-decimals="2">99.99%</span>
-        <span class="stat-label">Change Success Rate</span>
+    </section>
+
+    <!-- ============ THE PLATFORM ============ -->
+    <section class="section" id="platform">
+      <div class="block reveal">
+        <p class="kicker">The Platform</p>
+        <h2 class="section-head">An autonomous operations layer, not another point tool</h2>
+        <p class="section-body">
+          AutoNaaS discovers, diagnoses and prepares network changes end to end
+          across the full ITIL lifecycle. Human authorization stays the immutable
+          control point: every action is prepared and reviewed, then released by
+          an operator under an explicit authorization token.
+        </p>
       </div>
-      <div class="stat anim" style="--d: 0.66s">
-        <span class="stat-icon" aria-hidden="true">*</span>
-        <span class="stat-value" data-target="24" data-suffix="/7" data-decimals="0">24/7</span>
-        <span class="stat-label">Autonomous Coverage</span>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section" id="how-it-works">
+      <div class="block reveal">
+        <p class="kicker">How It Works</p>
       </div>
-      <div class="stat anim" style="--d: 0.74s">
-        <span class="stat-icon" aria-hidden="true">#</span>
-        <span class="stat-value" data-target="100" data-suffix="K" data-decimals="0">100K</span>
-        <span class="stat-label">Devices Per Tenant</span>
+
+      <ol class="pillars">
+        <li class="pillar reveal">
+          <span class="pillar-num" aria-hidden="true">01</span>
+          <h3 class="pillar-head">Autonomous Discovery &amp; Topology Intelligence</h3>
+          <p class="pillar-body">
+            Continuous, protocol-native discovery (SNMP, CDP/LLDP) builds and
+            maintains a living topology and device-health model at enterprise
+            scale &mdash; eliminating manual CMDB maintenance as an operational
+            dependency.
+          </p>
+        </li>
+        <li class="pillar reveal">
+          <span class="pillar-num" aria-hidden="true">02</span>
+          <h3 class="pillar-head">AI-Prepared, Human-Authorized Execution</h3>
+          <p class="pillar-body">
+            The platform performs end-to-end diagnosis, risk assessment and
+            change preparation; execution authority remains exclusively with the
+            human operator. AI never acts autonomously &mdash; every action is
+            prepared, reviewed, and released under an explicit authorization
+            token.
+          </p>
+        </li>
+        <li class="pillar reveal">
+          <span class="pillar-num" aria-hidden="true">03</span>
+          <h3 class="pillar-head">Full ITIL Lifecycle Orchestration</h3>
+          <p class="pillar-body">
+            AutoNaaS spans pre-work (ticketing, risk scoring, CAB alignment),
+            in-process execution, and post-work closure (documentation, CMDB
+            reconciliation, root-cause analysis) as a single automated continuum
+            &mdash; not a point tool bolted onto existing process.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ WHITEPAPER ============ -->
+    <section class="section section--wp" id="whitepaper">
+      <div class="block reveal">
+        <p class="kicker">Technical Whitepaper</p>
+        <h2 class="section-head">The AutoNaaS Architecture</h2>
+        <p class="section-body">A full account of the platform architecture and the authorization model. Coming soon.</p>
+        <a class="text-link" href="mailto:contact@atyantra.io?subject=Notify%20me%3A%20AutoNaaS%20whitepaper">
+          Ask to be notified
+        </a>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--cta" id="contact">
+      <div class="block reveal">
+        <h2 class="cta-head">Talk to us about your estate.</h2>
+        <a class="cta cta--lg" href="mailto:contact@atyantra.io">Talk to Us</a>
+        <a class="text-link" href="mailto:contact@atyantra.io">contact@atyantra.io</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-legal">Atyantra,&nbsp;Inc.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#platform">Platform</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#whitepaper">Whitepaper</a>
+        <a href="mailto:contact@atyantra.io">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Atyantra, Inc. All rights reserved.</p>
+    </div>
+  </footer>
 
   <!-- MOBILE MENU -->
   <div class="overlay" hidden></div>
   <div class="sheet" id="mobile-menu" hidden>
     <nav class="sheet-nav" aria-label="Mobile">
-      <a class="sheet-link is-active" href="#" aria-current="page">Home</a>
-      <a class="sheet-link" href="#">Platform</a>
-      <a class="sheet-link" href="#">How It Works</a>
-      <a class="sheet-link" href="#">Contact</a>
+      <a class="sheet-link is-active" href="#top" aria-current="page">Home</a>
+      <a class="sheet-link" href="#platform">Platform</a>
+      <a class="sheet-link" href="#how-it-works">How It Works</a>
+      <a class="sheet-link" href="#contact">Contact</a>
       <a class="sheet-signin" href="#">Sign in</a>
     </nav>
   </div>

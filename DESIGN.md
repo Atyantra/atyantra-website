@@ -44,26 +44,34 @@ The background video supplies all hue. The chrome stays strictly monochrome so i
 
 ## Layout
 
-- **Single viewport** (`100dvh`), `overflow: hidden`. The page never scrolls.
-- One centered composition, three stacked regions: header (max 720) / hero (max 900) / stats (max 920).
-  The group centers vertically with `vh`-scaled gaps that tighten under `@media (max-height: 760px)`.
-- Alignment: **centered** (deliberate — see Deviations).
-- **No cards, no panels, no sub-sections.** One hero.
-- Structural devices, each encoding real information: the three-dot active-nav marker (current page),
-  the overlapping avatar rings (multiple named customers). Nothing else is decorative.
+- **The hero is one viewport** (`100dvh`), centered. Below it the page **scrolls** into content
+  sections: Problem · Gap (pull-quote) · Platform · How It Works (3 pillars) · Whitepaper · Talk to Us · footer.
+- The **background video is `position: fixed`** behind the whole page and keeps looping through the
+  scroll. A fixed `.bg-scrim` (black) ramps opacity `~0.10` (hero) → `~0.46` (deep scroll) via JS,
+  so lower sections are dimmer but the motion is always present.
+- Content sections sit on a light vertical-gradient scrim (`rgba(0,0,0,.12 → .40 → .12)`); headings
+  and body carry a `text-shadow` so they stay legible over the moving video. No opaque section panels.
+- Hero content is **centered**; content sections are **left-aligned** to a `~62ch` measure inside a
+  `1180px` container.
+- Structural devices, each encoding real information: the three-dot active-nav marker (updates to the
+  section in view on scroll), the overlapping avatar rings (multiple named customers), the `01 / 02 / 03`
+  pillar numbers (a real sequence of platform layers). Nothing else is decorative.
 
 ## Motion
 
-One orchestrated page-load sequence, once:
-`slideDown` header → headline lines `headlineFade` (0.12s, 0.30s) → `.anim` stagger
+Page-load sequence, once (hero): headline lines `headlineFade` (0.12s, 0.30s) → `.anim` stagger
 (`reveal`; CTA uses `revealPulse`; delays 0.05–0.74s) → stat count-up
 (easeOutCubic, IntersectionObserver threshold 0.25, `1500 + i·80` ms).
 
+On scroll: each content block reveals **once** as it enters view (`.reveal` → `.is-visible`,
+IntersectionObserver, `translateY(28px)` + fade, 0.7s). The fixed video keeps playing; the scrim
+darkens with scroll depth; the active nav marker follows the section in view.
+
 - Hover only: `opacity` / color / `translateY` / `scale(≤1.04)`. No hover motion on non-interactive elements.
-- No scroll-triggered animation (there is no scroll).
 - Keyboard focus: one treatment — `2px solid #fff` outline, `3px` offset.
 - **Reduced motion** (`prefers-reduced-motion: reduce`): all animation collapses to the final state,
-  headline solid white, count-up jumps to target. Required — implemented.
+  every `.reveal` shown immediately, headline solid white, count-up jumps to target, **the background
+  video is paused**. Required — implemented.
 
 ## Components / tokens
 
