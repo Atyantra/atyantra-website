@@ -677,6 +677,7 @@ button:focus-visible {
 @media (max-width: 420px) {
   .trust {
     --trust-size: 34px;
+    max-width: 100%;
   }
 
   .headline {
@@ -685,7 +686,9 @@ button:focus-visible {
   }
 
   .trust-pill {
-    font-size: 12px;
+    font-size: 11px;
+    padding-right: calc(var(--trust-size) * 0.4);
+    padding-left: calc(var(--trust-size) * 0.5);
   }
 }
 
