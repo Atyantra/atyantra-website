@@ -2,6 +2,10 @@
 
 All skills below installed globally (`~/.claude`, symlinked into `.agents/skills` in this repo). Available to Claude Code, Cursor, Antigravity, Gemini CLI, Copilot, OpenCode.
 
+> **`landing/` is exempt.** Its design is locked (see DESIGN.md → "Deviations"). Do not
+> run the design-direction flow against it or try to de-templatize it — the owner
+> specified that composition. This guide applies to the Next.js marketing site.
+
 ## Process (use first)
 - **brainstorming** — before any structure/IA/feature decision. Run before scaffolding pages or picking design direction.
 - **frontend-design** — general aesthetic direction, typography, color choices that avoid templated look. Load before building new UI.

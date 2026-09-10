@@ -2,6 +2,12 @@
 
 Marketing/product site for Atyantra (parent org building AutoNaaS).
 
+Two things live here:
+
+- **`/` (this Next.js app)** — the multipage marketing site.
+- **[`landing/`](landing/README.md)** — the locked single-viewport video-background
+  landing page (plain HTML/CSS/JS, no build). Moves to its own repo/deploy.
+
 ## Stack
 
 - Next.js 16 (App Router, Turbopack)

@@ -27,9 +27,13 @@
     var startOffset = 480 + i * 90;
 
     if (reduceMotion) {
+      // markup already carries the final value; leave it
       el.textContent = formatValue(target, decimals, suffix);
       return;
     }
+
+    // markup carries the final value for the no-JS case; reset before counting
+    el.textContent = formatValue(0, decimals, suffix);
 
     window.setTimeout(function () {
       var start = null;
@@ -82,6 +86,8 @@
     overlay.hidden = false;
     sheet.hidden = false;
     document.body.classList.add("menu-open");
+    var first = sheet.querySelector("a");
+    if (first) first.focus();
   }
 
   function closeMenu() {
@@ -90,6 +96,7 @@
     overlay.hidden = true;
     sheet.hidden = true;
     document.body.classList.remove("menu-open");
+    burger.focus();
   }
 
   function isOpen() {
