@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "_higgsfield_TODO": {
+      "note": "Fill in when the Higgsfield API key is supplied, then rename key to 'higgsfield'.",
+      "type": "http",
+      "url": "https://TODO.higgsfield.example/mcp",
+      "headers": { "Authorization": "Bearer TODO" }
+    }
+  }
+}
