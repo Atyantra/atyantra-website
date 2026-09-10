@@ -22,8 +22,8 @@ export default function Home(): JSX.Element {
     <div className="min-h-screen overflow-x-hidden">
       <section className="relative flex h-screen flex-col items-center overflow-hidden">
         <TopologyHero />
-        <div className="z-10 flex w-full max-w-3xl flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28 md:pt-32">
-          <h1 className="max-w-full text-balance font-serif text-[2rem] font-normal leading-[1.1] tracking-tighter text-ink sm:text-5xl md:text-7xl lg:text-8xl">
+        <div className="z-10 flex w-full flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28 md:pt-32">
+          <h1 className="max-w-full text-balance font-serif text-[1.9rem] font-normal leading-[1.1] tracking-tighter text-ink sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
             {hero.h1Lines.map((line) => (
               <span key={line} className="block">
                 {line}
