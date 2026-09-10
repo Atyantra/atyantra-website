@@ -22,15 +22,15 @@ export default function Home(): JSX.Element {
     <div className="min-h-screen overflow-x-hidden">
       <section className="relative flex h-screen flex-col items-center overflow-hidden">
         <TopologyHero />
-        <div className="z-10 flex flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28 md:pt-32">
-          <h1 className="font-serif text-4xl font-normal leading-[1.1] tracking-tighter text-ink sm:text-5xl md:text-7xl lg:text-8xl">
+        <div className="z-10 flex w-full max-w-3xl flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28 md:pt-32">
+          <h1 className="max-w-full text-balance font-serif text-[2rem] font-normal leading-[1.1] tracking-tighter text-ink sm:text-5xl md:text-7xl lg:text-8xl">
             {hero.h1Lines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>
             ))}
           </h1>
-          <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-muted sm:mt-6 md:mt-8 md:text-base">
+          <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-ink-muted sm:mt-6 md:mt-8 md:text-base">
             {hero.sub}
           </p>
           <CtaButton href={hero.cta.href} size="hero" className="mt-6 sm:mt-8 md:mt-10">

@@ -51,3 +51,6 @@ next-env.d.ts
 /.mcp.json
 .worktrees/
 .superpowers/
+
+# local screenshots
+/shots/
