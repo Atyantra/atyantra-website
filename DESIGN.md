@@ -68,10 +68,12 @@ One orchestrated page-load sequence, once:
 ## Components / tokens
 
 - Tokens are CSS custom properties on `:root` in `landing/styles.css`.
-- Shadows — exactly three, each scoped: `--nav-shadow: 0 4px 14px rgba(0,0,0,.16)` (pills),
-  the CTA white glow, the mobile sheet `0 20px 60px rgba(0,0,0,.45)`.
-- Radii scaled to the element: `999px` pills, `50%` logo/avatars, `28px` mobile sheet, `6px` focus ring.
-  No single global radius.
+- Shadows — three, each scoped: `--nav-shadow: 0 4px 14px rgba(0,0,0,.16)` (pills),
+  the CTA white glow, the mobile sheet `0 20px 60px rgba(0,0,0,.45)`. (The three-dot
+  active-nav marker also uses `box-shadow` — as a drawing trick to place two extra dots
+  from one element, not as a shadow effect.)
+- Radii scaled to the element: `999px` pills, `50%` logo/avatars, `28px` mobile sheet,
+  `4–6px` focus ring. No single global radius.
 
 ## Stack
 
