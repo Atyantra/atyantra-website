@@ -10,7 +10,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./test/setup.ts'],
     globals: true,
-    include: ['**/*.test.{ts,tsx}'],
+    include: ['test/**/*.test.{ts,tsx}'],
+    exclude: ['node_modules', '.next', '.worktrees'],
   },
   resolve: { alias: { '@': resolve(rootDir, '.') } },
 })
