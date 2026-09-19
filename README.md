@@ -5,8 +5,8 @@ Marketing/product site for Atyantra (parent org building AutoNaaS).
 Two things live here:
 
 - **`/` (this Next.js app)** — the multipage marketing site.
-- **[`landing/`](landing/README.md)** — the locked single-viewport video-background
-  landing page (plain HTML/CSS/JS, no build). Moves to its own repo/deploy.
+- **[`landing/`](landing/README.md)** — the locked landing page (Vite + React + TypeScript +
+  Tailwind; video hero over a contour-field background). Moves to its own repo/deploy.
 
 ## Stack
 

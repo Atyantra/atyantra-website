@@ -1,48 +1,37 @@
-# AutoNaaS — landing page
+# Atyantra — landing page
 
-Single-viewport, full-bleed video-background landing page for AutoNaaS.
-Plain **HTML + CSS + vanilla JS**. No framework, no build step.
+The **locked** landing page for Atyantra / TruVigil. Design rules and the verification
+checklist live in [`../DESIGN.md`](../DESIGN.md) — read it before changing anything visual.
 
-```
-landing/
-  index.html
-  styles.css
-  main.js
-  assets/logo.svg        # placeholder — swap for logo.webp
-  fonts/GeistPixel-Circle.woff2   # placeholder — display fallback only
-```
+## Stack
+
+Vite · React 19 · TypeScript · Tailwind 3.4 · `lucide-react`. Lint with `oxlint`.
 
 ## Run
 
-Any static server from this directory, e.g.:
-
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # tsc -b && vite build
+npm run lint
 ```
-python -m http.server 3000
-# or
-npx serve .
-```
 
-Then open http://localhost:3000.
+Restart `npm run dev` after editing `tailwind.config.js` (colour tokens).
 
-## Design
+## Where things are
 
-See [`../DESIGN.md`](../DESIGN.md) — the design is **locked**. Tokens live in
-`styles.css` `:root`.
+| Path | What |
+|---|---|
+| `src/layout.ts` | container, fluid type scale, focus ring, buttons — the design tokens |
+| `src/index.css` | colour variables, hero-over white flip, marquee, nav blur |
+| `src/components/ContourField.tsx` | fixed contour-line background (canvas) |
+| `src/components/HeroVideo.tsx` | hero video: lazy load, scroll fade, skip rules |
+| `src/components/Hero.tsx` · `Operations.tsx` · `Control.tsx` · `Closing.tsx` | page sections |
+| `src/components/Navbar.tsx` | nav, three-dot active marker, mobile sheet |
 
-- Display font: `BubbledotICG-FinePos` (OnlineWebFonts CDN), dot-matrix.
-- UI font: Inter (Google Fonts).
-- Icons: Font Awesome 6.5.2 (cdnjs).
-- Background: fixed CloudFront MP4, `object-fit: cover`, behind everything.
-- One page-load animation sequence; `prefers-reduced-motion` collapses it to the final state.
+## Rules to keep
 
-## Assets to supply
-
-| File | Status | How to swap |
-|---|---|---|
-| `assets/logo.webp` | using `assets/logo.svg` (cycle mark) | drop in `logo.webp`, change the `<img src>` in `index.html` |
-| `fonts/GeistPixel-Circle.woff2` | missing (fallback-only; CDN display font covers it) | drop the file in; `@font-face` in `styles.css` already points at it |
-
-## Deploy
-
-Static hosting — any of Vercel / Netlify / Cloudflare Pages / GitHub Pages / S3+CloudFront.
-No config needed; the three files plus `assets/` and `fonts/` are the whole site.
+- Monochrome chrome (ink on ground). No accent colour, no CSS gradients.
+- No hover motion on non-interactive elements.
+- Everything respects `prefers-reduced-motion` (video skipped, marquee stopped, reveals shown).
+- After any visual change, re-run the checks in DESIGN.md → Verification.

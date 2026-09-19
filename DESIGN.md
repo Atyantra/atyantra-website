@@ -1,11 +1,14 @@
 # Atyantra — Design System
 
-Status: **locked** for the landing page (`landing/`). Owner-approved 2026-09-10.
-Source of truth for tokens is `landing/styles.css` `:root`; this file explains the *why*.
+Status: **locked** for the landing page (`landing/`). Owner-approved 2026-09-19.
+Source of truth for tokens is code: `landing/src/layout.ts` (type + layout + button tokens),
+`landing/src/index.css` (colour variables, hero-over flip, marquee), `landing/tailwind.config.js`
+(colour names). This file explains the *why* and records what was verified.
 
 ## Brand
 
 - Company: Atyantra — parent org, builds **AutoNaaS** (AI-native NOC engineering platform).
+  The landing page markets the **TruVigil** AI operations platform (owner-supplied copy).
 - Tone: **operations-grade**. Technical, precise, quietly confident. The register of a
   NOC console and a change record — not a SaaS pitch. Sentence case, plain verbs, no filler.
 
@@ -13,95 +16,117 @@ Source of truth for tokens is `landing/styles.css` `:root`; this file explains t
 
 | Role | Family | Notes |
 |---|---|---|
-| Display | `BubbledotICG-FinePos` (retro dot-matrix) | H1 + stat symbol glyphs only. Evokes terminal readouts / telemetry instrumentation. Loaded from OnlineWebFonts CDN. |
-| Display fallback | `Geist Pixel Circle` (local `@font-face`) → `monospace` | |
-| UI / body | `Inter` 400 / 500 / 600 → `Segoe UI, system-ui, sans-serif` | Loaded from Google Fonts. |
-| Data | Inter + `font-variant-numeric: tabular-nums`, tracking `-0.025em` | Stat values. |
+| Display + UI + body | `Inter` 400 / 500 / 600 → `system-ui, sans-serif` | Google Fonts. |
+| Labels | `font-mono` (mapped to Inter in Tailwind), uppercase, tracking `0.15em` | Chips, tags, marquee, flows. |
 
-- Scale: fluid `clamp()`. Headline `clamp(28px, 6.2vw, 80px)`; subhead `clamp(~15.5px, 1.55vw + 2pt, ~18.5px)`;
-  nav / CTA `clamp(13–15px)`; stat value `clamp(18–26px)`; labels `clamp(11–12.5px)`.
-- Headline tracking: `-0.04em` desktop, `-0.08em` ≤720px, `-0.09em` ≤420px. Line-height `1.12 → 1.05 → 1.04`.
-- Headline is **solid white** — no gradient, no shimmer, no LED-scan.
+- Scale is fluid `clamp()`, defined once in `layout.ts`:
+  H1 `clamp(28px, 6.2vw, 80px)` · H2 `clamp(28px, 4.4vw, 56px)` ·
+  subhead `clamp(15.5px, 1.55vw + 2pt, 18.5px)` · nav / CTA `clamp(13px, 1.1vw, 15px)` ·
+  labels `clamp(11px, 0.9vw, 12.5px)`. Body copy in cards `clamp(14px, 1.2vw, 16px)`.
+- Headline tracking `-0.03em`, line-height `1.05`. H2 `-0.03em` / `1.08`.
+- Headline is **solid** — no gradient, no shimmer. White over the video, ink elsewhere.
+- Numerals (`01–04`) are ≥ 24px so their lighter ink still meets large-text contrast.
 
-## Color
+## Colour
 
-The background video supplies all hue. The chrome stays strictly monochrome so it never competes.
+Chrome is strictly monochrome: one ink, one ground. Hue comes only from the hero video.
 
 | Token | Value | Use |
 |---|---|---|
-| `--bg` | `#000000` | page ground |
-| `--text` | `#ffffff` | primary text |
-| `--muted` | `#8e8e8e` | stat labels |
-| `--nav-text` | `#2e2e2e` | links on the white nav pill |
-| `--sign-in-text` | `#c8c8c8` | dark pill text |
-| `--pill-dark` | `#28282a` | dark pills, burger, avatar rings |
-| `--trust-border` | `rgba(255,255,255,0.4)` | avatar / pill hairline |
-| `--trust-text` | `#c4c2c3` | trust-pill label |
+| `ground` | `#e8edf3` | page ground (cool blue-white), menu sheet |
+| `ink` | `rgb(var(--ink))` = `#0b0e14` | all text, borders, fills |
+| `inkfg` | `rgb(var(--ink-fg))` = `#e8edf3` | text on an ink-filled pill |
+| `panel` | `rgb(var(--panel))` = white | translucent strips (marquee) |
 
-- **No chromatic accent.** The one bold element is the white glow on the CTA
-  (`0 0 22px / 44px rgba(255,255,255,.32 / .12)`).
-- **No CSS gradients.** The purple/amber field is the background video only.
+- Text ladder on ground: `ink` headings · `ink/85` hero body · `ink/70` body · `ink/60` labels,
+  tags and separators (≥ 4.5:1) · `ink/50` only for ≥ 24px numerals (≥ 3:1). Nothing lighter carries meaning.
+- **Over the hero video** the hero + nav flip to white: `html[data-over="true"] .hero-over`
+  swaps `--ink` → white, `--ink-fg` → ink, `--panel` → black. Set by `HeroVideo` while the
+  video is visible (fade progress < 0.45). The mobile sheet resets to ink (`.nav-sheet`).
+- **No chromatic accent.** **No CSS gradients** (verified: zero gradient backgrounds in the DOM).
+  The one bold element is the glow on the primary CTA: `0 0 22px / 44px rgb(var(--ink) / .3 / .12)`.
+
+## Background
+
+Two layers, both fixed, both non-interactive:
+
+1. **Contour field** (`ContourField.tsx`) — canvas of slow-drifting topographic isolines, ink hairlines
+   (`.10` minor / `.20` major alpha) on ground. Ambient, independent of scroll. One static frame under
+   reduced motion.
+2. **Hero video** (`HeroVideo.tsx`) — city/park clip, `saturate(0.7)` with a `black/30` tint, on top of the
+   contour field. Fades out over `0.9 × viewport` of scroll, pauses when hidden, resumes when back at top.
+   Loads only after `window.load`. **Skipped** on viewports < 768px, Data Saver, and reduced motion —
+   those get the contour field only.
 
 ## Layout
 
-- **The hero is one viewport** (`100dvh`), centered. Below it the page **scrolls** into content
-  sections: Problem · Gap (pull-quote) · Platform · How It Works (3 pillars) · Whitepaper · Talk to Us · footer.
-- The **background video is `position: fixed`** behind the whole page and keeps looping through the
-  scroll. A fixed `.bg-scrim` (black) ramps opacity `~0.10` (hero) → `~0.46` (deep scroll) via JS,
-  so lower sections are dimmer but the motion is always present.
-- Content sections sit on a light vertical-gradient scrim (`rgba(0,0,0,.12 → .40 → .12)`); headings
-  and body carry a `text-shadow` so they stay legible over the moving video. No opaque section panels.
-- Hero content is **centered**; content sections are **left-aligned** to a `~62ch` measure inside a
-  `1180px` container.
-- Structural devices, each encoding real information: the three-dot active-nav marker (updates to the
-  section in view on scroll), the overlapping avatar rings (multiple named customers), the `01 / 02 / 03`
-  pillar numbers (a real sequence of platform layers). Nothing else is decorative.
+- Everything sits in one `1180px` container (`CONTAINER`), left-aligned, `~62ch` measure for prose.
+  Nav, hero, sections and footer share the same left edge.
+- **The hero is one viewport** (`100dvh`), left-aligned. Sections scroll below:
+  01 How operations change · 02 What TruVigil does · 03 Governed automation · 04 Human control ·
+  05 Deployment · closing CTA · footer.
+- Sections use a translucent `white/25` wash, cards `white/50` + `backdrop-blur`. No opaque panels.
+- Structural devices, each encoding real information: the three-dot active-nav marker (follows the section
+  in view), the `01–04` numbers (a real sequence), the mode level bars (autonomy 1–3 of 3), the
+  bordered `APPROVAL` step (the human control point). Nothing else is decorative.
+- **Nav:** transparent at top; after 24px scroll it gets a blurred wash (`ground/70`, or `black/30` over the
+  video). Under 768px links move into a burger → sheet.
 
 ## Motion
 
-Page-load sequence, once (hero): headline lines `headlineFade` (0.12s, 0.30s) → `.anim` stagger
-(`reveal`; CTA uses `revealPulse`; delays 0.05–0.74s) → stat count-up
-(easeOutCubic, IntersectionObserver threshold 0.25, `1500 + i·80` ms).
+Page load, once: hero blocks `Reveal` in staggered (0.12–0.48s delays).
+On scroll: every block reveals **once** (`translateY(28px)` + fade, 0.7s, IntersectionObserver 0.15).
 
-On scroll: each content block reveals **once** as it enters view (`.reveal` → `.is-visible`,
-IntersectionObserver, `translateY(28px)` + fade, 0.7s). The fixed video keeps playing; the scrim
-darkens with scroll depth; the active nav marker follows the section in view.
-
-- Hover only: `opacity` / color / `translateY` / `scale(≤1.04)`. No hover motion on non-interactive elements.
-- Keyboard focus: one treatment — `2px solid #fff` outline, `3px` offset.
-- **Reduced motion** (`prefers-reduced-motion: reduce`): all animation collapses to the final state,
-  every `.reveal` shown immediately, headline solid white, count-up jumps to target, **the background
-  video is paused**. Required — implemented.
+- Hover only on interactive elements: opacity / colour / `scale(≤1.03)`. **No hover motion on
+  non-interactive elements** (discipline rows, cards).
+- Keyboard focus: one treatment — `2px solid` ink (white over video), `3px` offset (`FOCUS`).
+- **Reduced motion:** reveals shown immediately, marquee stopped, contour field static, video not loaded,
+  smooth scroll off. Required — verified.
 
 ## Components / tokens
 
-- Tokens are CSS custom properties on `:root` in `landing/styles.css`.
-- Shadows — three, each scoped: `--nav-shadow: 0 4px 14px rgba(0,0,0,.16)` (pills),
-  the CTA white glow, the mobile sheet `0 20px 60px rgba(0,0,0,.45)`. (The three-dot
-  active-nav marker also uses `box-shadow` — as a drawing trick to place two extra dots
-  from one element, not as a shadow effect.)
-- Radii scaled to the element: `999px` pills, `50%` logo/avatars, `28px` mobile sheet,
-  `4–6px` focus ring. No single global radius.
+- Shadows — two, each scoped: the CTA glow, and the mobile sheet `0 20px 60px rgba(0,0,0,.45)`.
+  (Text-shadow `0 1px 14px rgb(0 0 0 / .35)` is used only on hero text while over the video, for legibility.)
+- Radii scaled to the element: `999px` pills and dots, `16px` cards, `28px` mobile sheet, `6px` nav button.
+  No single global radius.
+- Buttons: `BTN_PRIMARY` (ink pill + glow), `BTN_SECONDARY` (hairline pill). Both in `layout.ts`.
 
 ## Stack
 
-Plain **HTML + CSS + vanilla JS**, no framework/build. Files:
-`landing/{index.html, styles.css, main.js}`, `landing/assets/logo.{svg|webp}`,
-`landing/fonts/GeistPixel-Circle.woff2`.
-External: Google Fonts (Inter), OnlineWebFonts CDN (BubbledotICG-FinePos), cdnjs (Font Awesome 6.5.2),
-fixed CloudFront MP4 for the background video.
+**Vite + React 19 + TypeScript + Tailwind 3.4** in `landing/` (`npm run dev` / `build`; `tsc -b` + `oxlint` clean).
+External: Google Fonts (Inter), one CloudFront MP4 (hero video). Icons: `lucide-react`.
+`landing/` is separate from the Next.js site described in `AGENTS.md`.
 
-## Deviations from earlier guidance — all owner-directed, recorded so they are not "corrected" back
+## Deviations from the original locked spec — all owner-directed, recorded so they are not "corrected" back
 
-1. **Stack** — plain static files instead of Next.js + TS + Tailwind. Owner supplied a pixel-exact static spec.
-2. **Centered / symmetric hero over full-bleed video** — earlier text said avoid
-   "centered-hero-with-gradient-orbs" and "symmetric everything". Owner specified this composition directly.
-3. **Warm purple/amber background field** — earlier said "no purple/blue gradient blobs". It is the
-   owner's chosen video asset (exact CloudFront URL), not a CSS default.
-4. **Dot-matrix display type** — a subject-grounded choice (NOC instrumentation), replacing the earlier serif.
+1. **Stack** — Vite/React/Tailwind instead of plain HTML/CSS/JS.
+2. **Light theme** — cool blue-white ground with ink text instead of a black ground with white text.
+   (Hero over the video is white-on-photo, as originally specified.)
+3. **Left-aligned hero** — instead of the centered composition.
+4. **Background** — contour field + a desaturated city/park video in the hero only, instead of a fixed,
+   looping purple/amber video behind the whole page. The video keeps the rule that hue comes from the
+   video, not the chrome.
+5. **Inter headlines** — the dot-matrix display face (`BubbledotICG-FinePos`) is not loaded, so the
+   original headline tracking (`-0.04em` → `-0.09em`) is replaced by `-0.03em`. Loading it later means
+   re-tuning tracking.
+6. **Content** — TruVigil copy, `@atyantra.tech` emails and the WV / Bengaluru addresses come from the
+   owner's HTML and are used as written. No stats row, trust pill or avatars.
+
+## Verification (2026-09-19)
+
+Checked in a browser at 1440, 768 and 390px, plus `prefers-reduced-motion`:
+
+- H1 80px solid white over video, no gradient backgrounds anywhere, no horizontal overflow at any width.
+- Only the two scoped box-shadows exist; radii limited to `9999 / 16 / 6 / 28px`.
+- Focus ring `2px solid` / `3px` offset on links and buttons.
+- Reduced motion: no video, marquee `animation: none`, 40 / 40 reveal blocks visible, `scroll-behavior: auto`.
+- Mobile: burger + sheet (28px radius, scoped shadow, ink links), closes on link tap and `Esc`.
+- Contrast sweep of all light-section text ≥ 4.5:1 (≥ 3:1 large). Decorative `/` separators are `aria-hidden` and `ink/60`.
+
+Re-run this list after any visual change before treating the page as still locked.
 
 ## Reference
 
-- Owner's supplied spec + the "Intelligence Designed To Evolve" reference render (the shell this is built from).
+- Owner's supplied HTML (content + information design) and the video URLs used in `HeroVideo.tsx`.
 - motion.dev — Motion library API (if motion work resumes).
 - 21st.dev — component pattern gallery.

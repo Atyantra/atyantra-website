@@ -10,10 +10,11 @@ New marketing/product website for Atyantra (parent org building AutoNaaS). Fresh
 ## Stack (default — confirm before deviating)
 Next.js (latest, breaking changes vs training data — check `node_modules/next/dist/docs/` before writing framework code), TypeScript, Tailwind.
 
-**Exception:** `landing/` is the **locked** single-viewport video-background landing page —
-plain HTML/CSS/JS, no framework (owner-directed, pixel-exact spec). Its design is frozen;
-see [DESIGN.md](DESIGN.md) → "Deviations". Do not re-architect it or "correct" its centered /
-video-background composition back toward the general guidance below — that composition is the ask.
+**Exception:** `landing/` is the **locked** landing page — Vite + React + TypeScript + Tailwind,
+a video-over-contour-field background with a light blue-white scheme (owner-directed). Its design is
+frozen; see [DESIGN.md](DESIGN.md) → "Deviations" and "Verification". Do not re-architect it or
+"correct" its light theme / video hero back toward the general guidance below — that is the ask.
+Re-run the DESIGN.md verification list after any visual change to it.
 
 ## Process
 Use `brainstorming` skill before first-pass structure/IA decisions. Use `frontend-design` / installed taste skills (`high-end-visual-design`, `design-taste-frontend`, `emil-design-eng`, `apple-design`) for visual direction — avoid generic AI-site look (no default shadcn hero, no purple gradient blobs, no generic 3-card feature grid unless justified). These apply to the Next.js site; `landing/` is exempt (locked).

@@ -1,0 +1,168 @@
+import Reveal from "./Reveal";
+import SectionHead from "./SectionHead";
+import { CONTAINER, LABEL, SECTION_PAD } from "../layout";
+
+const DISCIPLINES = [
+  {
+    n: "01",
+    title: "Continuous Observation",
+    body: "AI agents watch every circuit, route and device around the clock, correlating signals before they become outages.",
+  },
+  {
+    n: "02",
+    title: "AI Investigation",
+    body: "When something looks wrong, the AI traces root cause across routing, application and device layers automatically.",
+  },
+  {
+    n: "03",
+    title: "Governed Remediation",
+    body: "Fixes are validated against real network context and executed deterministically — never guessed.",
+  },
+  {
+    n: "04",
+    title: "Human Oversight",
+    body: "Every autonomous action operates inside guardrails your team defines and can review at any time.",
+  },
+];
+
+const OLD_FLOW = "Telemetry / Alert / Ticket / Engineer / Investigation / CLI";
+const NEW_FLOW = [
+  "Telemetry",
+  "AI Investigation",
+  "Root Cause",
+  "Validation",
+  "Action",
+];
+const GOVERNED_FLOW = [
+  "Intent",
+  "AI Reasoning",
+  "Network Context",
+  "Validation",
+  "Approval",
+  "Deterministic Execution",
+  "Verification",
+];
+
+const STACK = `${CONTAINER} flex flex-col gap-12`;
+const FLOW = `${LABEL} tracking-[0.15em]`;
+
+export default function Operations() {
+  return (
+    <>
+      <section id="platform" className={SECTION_PAD}>
+        <div className={STACK}>
+          <SectionHead
+            label="01 — How Operations Change"
+            title={
+              <>
+                We didn’t automate the old workflow.
+                <br />
+                We replaced it.
+              </>
+            }
+          />
+          <div className="flex max-w-4xl flex-col gap-6">
+            <Reveal delay={150}>
+              <p className={`${FLOW} text-ink/60 line-through decoration-ink/30`}>
+                {OLD_FLOW}
+              </p>
+            </Reveal>
+            <Reveal delay={250}>
+              <p
+                className={`${FLOW} flex flex-wrap items-center gap-x-3 gap-y-2 text-ink`}
+              >
+                {NEW_FLOW.map((step, i) => (
+                  <span key={step} className="flex items-center gap-3">
+                    <span
+                      className={
+                        i === 1 || i === 2 ? "border-b border-ink pb-0.5" : ""
+                      }
+                    >
+                      {step}
+                    </span>
+                    {i < NEW_FLOW.length - 1 && (
+                      <span className="text-ink/60" aria-hidden="true">
+                        /
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-operations" className={SECTION_PAD}>
+        <div className={STACK}>
+          <SectionHead
+            label="02 — What TruVigil Does"
+            title="One AI layer, four disciplines."
+          />
+          <ol className="max-w-4xl border-t border-ink/15">
+            {DISCIPLINES.map((d, i) => (
+              <Reveal
+                as="li"
+                key={d.n}
+                delay={100 + i * 80}
+                className="flex items-baseline gap-6 border-b border-ink/15 py-8 sm:gap-10"
+              >
+                <span className="w-12 shrink-0 font-mono text-[clamp(24px,3vw,36px)] tracking-tight text-ink/50">
+                  {d.n}
+                </span>
+                <div className="flex-1">
+                  <h3 className="text-[clamp(17px,1.6vw,20px)] font-medium text-ink">
+                    {d.title}
+                  </h3>
+                  <p className="mt-2 max-w-[62ch] text-[clamp(14px,1.2vw,16px)] leading-relaxed text-ink/70">
+                    {d.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="security" className={SECTION_PAD}>
+        <div className={STACK}>
+          <SectionHead
+            label="03 — Governed Automation"
+            title={
+              <>
+                AI can reason.
+                <br />
+                Infrastructure changes remain governed.
+              </>
+            }
+            lede="Every recommendation is validated against real network state and requires explicit sign-off before execution."
+          />
+          <Reveal delay={200} className="max-w-4xl">
+            <p
+              className={`${FLOW} flex flex-wrap items-center gap-x-3 gap-y-3 text-ink/70`}
+            >
+              {GOVERNED_FLOW.map((step, i) => (
+                <span key={step} className="flex items-center gap-3">
+                  <span
+                    className={
+                      step === "Approval"
+                        ? "border border-ink px-2.5 py-1 text-ink"
+                        : ""
+                    }
+                  >
+                    {step}
+                  </span>
+                  {i < GOVERNED_FLOW.length - 1 && (
+                    <span className="text-ink/60" aria-hidden="true">
+                      /
+                    </span>
+                  )}
+                </span>
+              ))}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}

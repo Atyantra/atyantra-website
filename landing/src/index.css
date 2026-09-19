@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #e8edf3;
+  color: #0b0e14;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(11, 14, 20, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Colour tokens as RGB triplets so the hero + nav can flip over the video. */
+:root {
+  --ink: 11 14 20;
+  --ink-fg: 232 237 243;
+  --panel: 255 255 255;
+}
+
+/* HeroVideo sets data-over="true" while the video is visible. */
+html[data-over="true"] .hero-over {
+  --ink: 255 255 255;
+  --ink-fg: 11 14 20;
+  --panel: 0 0 0;
+}
+
+html[data-over="true"] .hero-over :is(h1, p, span) {
+  text-shadow: 0 1px 14px rgb(0 0 0 / 0.35);
+}
+
+.nav-blur {
+  background: rgb(232 237 243 / 0.7);
+}
+
+html[data-over="true"] .nav-blur {
+  background: rgb(0 0 0 / 0.3);
+}
+
+/* Mobile sheet sits on the ground colour, so it never inherits the white hero tokens. */
+html[data-over="true"] .nav-sheet {
+  --ink: 11 14 20;
+  --ink-fg: 232 237 243;
+  --panel: 255 255 255;
+}

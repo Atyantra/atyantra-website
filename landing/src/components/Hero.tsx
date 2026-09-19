@@ -1,0 +1,67 @@
+import Reveal from "./Reveal";
+import Marquee from "./Marquee";
+import {
+  BTN_PRIMARY,
+  BTN_SECONDARY,
+  CHIP,
+  CONTAINER,
+  H1,
+  LABEL,
+  SUB,
+} from "../layout";
+
+export default function Hero() {
+  return (
+    <section
+      id="top"
+      className="hero-over min-h-screen supports-[height:100svh]:min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28"
+    >
+      <div
+        className={`${CONTAINER} flex flex-col gap-4 sm:flex-row sm:justify-between`}
+      >
+        <Reveal delay={120}>
+          <span className={`${LABEL} text-ink/90`}>/ Atyantra Network Ops</span>
+        </Reveal>
+        <Reveal delay={220}>
+          <span className={`flex items-center gap-2 ${LABEL} text-ink/90`}>
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-ink"
+              aria-hidden="true"
+            />
+            TruVigil AI Operations Platform
+          </span>
+        </Reveal>
+      </div>
+
+      <div className={`${CONTAINER} pb-12 md:pb-16`}>
+        <Reveal delay={150} className="mb-5 inline-block">
+          <span className={CHIP}>AI-First Network Operations</span>
+        </Reveal>
+        <Reveal delay={280}>
+          <h1 className={`max-w-4xl text-ink ${H1}`}>
+            Network Operations,
+            <br />
+            Rebuilt Around AI.
+          </h1>
+        </Reveal>
+        <Reveal delay={380} className="mt-6 max-w-[62ch]">
+          <p className={`text-ink/85 ${SUB}`}>
+            AI agents continuously observe, investigate and operate your
+            network — backed by deterministic automation, engineering
+            guardrails and human control.
+          </p>
+        </Reveal>
+        <Reveal delay={480} className="mt-8 flex flex-wrap gap-3">
+          <a href="#platform" className={BTN_PRIMARY}>
+            Explore TruVigil
+          </a>
+          <a href="#company" className={BTN_SECONDARY}>
+            Request Technical Demo
+          </a>
+        </Reveal>
+      </div>
+
+      <Marquee />
+    </section>
+  );
+}
