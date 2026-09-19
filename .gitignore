@@ -52,5 +52,7 @@ next-env.d.ts
 .worktrees/
 .superpowers/
 
-# local screenshots
+# local screenshots + browser-test artifacts
 /shots/
+/.playwright-mcp/
+/landing-page.png
