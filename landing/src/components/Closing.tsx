@@ -20,7 +20,7 @@ export default function Closing() {
         <div className={CONTAINER}>
           <Reveal delay={100}>
             <h2 className={`max-w-3xl text-ink ${H2}`}>
-              Let’s rebuild your operations around AI.
+              Let’s redefine your operations around AI.
             </h2>
           </Reveal>
           <Reveal delay={200} className="mt-5 max-w-[62ch]">
@@ -53,9 +53,9 @@ export default function Closing() {
             </div>
             <div className="flex flex-col gap-3">
               <h4 className={HEAD}>Legal &amp; Security</h4>
-              <a href="#" className={LINK}>Trust Center</a>
-              <a href="#" className={LINK}>Zero-Trust Privacy Policy</a>
-              <a href="#" className={LINK}>Terms of Service</a>
+              <a href="/trust" className={LINK}>Trust Center</a>
+              <a href="/privacy" className={LINK}>Zero-Trust Privacy Policy</a>
+              <a href="/terms" className={LINK}>Terms of Service</a>
             </div>
             <div className="flex flex-col gap-3">
               <h4 className={HEAD}>Contact</h4>

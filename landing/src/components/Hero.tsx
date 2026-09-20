@@ -6,7 +6,6 @@ import {
   CHIP,
   CONTAINER,
   H1,
-  LABEL,
   SUB,
 } from "../layout";
 
@@ -16,17 +15,9 @@ export default function Hero() {
       id="top"
       className="hero-over min-h-screen supports-[height:100svh]:min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28"
     >
-      <div className={CONTAINER}>
-        <Reveal delay={120}>
-          <span className={`${LABEL} text-ink/90`}>
-            Autonomous Network as a Service
-          </span>
-        </Reveal>
-      </div>
-
-      <div className={`${CONTAINER} pb-12 md:pb-16`}>
+      <div className={`${CONTAINER} mt-auto pb-12 md:pb-16`}>
         <Reveal delay={150} className="mb-5 inline-block">
-          <span className={CHIP}>AI-First Network Operations</span>
+          <span className={CHIP}>Autonomous Network as a Service</span>
         </Reveal>
         <Reveal delay={280}>
           <h1 className={`max-w-4xl text-ink ${H1}`}>

@@ -73,9 +73,9 @@ export default function Operations() {
             <div className="grid max-w-4xl gap-10 sm:grid-cols-2 sm:gap-8">
               {[
                 { title: "Legacy Workflow", steps: LEGACY_FLOW, legacy: true },
-                { title: "Atyantra Transformed Workflow", steps: NEW_FLOW, legacy: false },
+                { title: <>TruVigil<sup className="text-[0.65em]">TM</sup> Transformed Workflow</>, steps: NEW_FLOW, legacy: false },
               ].map((col) => (
-                <div key={col.title}>
+                <div key={col.legacy ? "legacy" : "new"}>
                   <p className={`${FLOW} border-b border-ink/30 pb-3 ${col.legacy ? "text-ink/60" : "text-ink"}`}>
                     {col.title}
                   </p>
