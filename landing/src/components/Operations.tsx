@@ -25,7 +25,14 @@ const DISCIPLINES = [
   },
 ];
 
-const OLD_FLOW = "Telemetry / Alert / Ticket / Engineer / Investigation / CLI";
+const LEGACY_FLOW = [
+  "Telemetry",
+  "Alert",
+  "Ticket",
+  "Engineer",
+  "Investigation",
+  "CLI",
+];
 const NEW_FLOW = [
   "Telemetry",
   "AI Investigation",
@@ -55,41 +62,50 @@ export default function Operations() {
             label="01 — How Operations Change"
             title={
               <>
-                We didn’t automate the old workflow.
+                We didn’t automate the legacy workflow.
                 <br />
-                We replaced it.
+                We transformed it.
               </>
             }
           />
-          <div className="flex max-w-4xl flex-col gap-6">
-            <Reveal delay={150}>
-              <p className={`${FLOW} text-ink/60 line-through decoration-ink/30`}>
-                {OLD_FLOW}
-              </p>
-            </Reveal>
-            <Reveal delay={250}>
-              <p
-                className={`${FLOW} flex flex-wrap items-center gap-x-3 gap-y-2 text-ink`}
-              >
-                {NEW_FLOW.map((step, i) => (
-                  <span key={step} className="flex items-center gap-3">
-                    <span
-                      className={
-                        i === 1 || i === 2 ? "border-b border-ink pb-0.5" : ""
-                      }
-                    >
-                      {step}
-                    </span>
-                    {i < NEW_FLOW.length - 1 && (
-                      <span className="text-ink/60" aria-hidden="true">
-                        /
-                      </span>
-                    )}
-                  </span>
-                ))}
-              </p>
-            </Reveal>
-          </div>
+          <Reveal delay={150}>
+            <p className={`${FLOW} mb-4 text-ink`}>Let’s compare</p>
+            <div className="grid max-w-4xl gap-10 sm:grid-cols-2 sm:gap-8">
+              {[
+                { title: "Legacy Workflow", steps: LEGACY_FLOW, legacy: true },
+                { title: "Atyantra Transformed Workflow", steps: NEW_FLOW, legacy: false },
+              ].map((col) => (
+                <div key={col.title}>
+                  <p className={`${FLOW} border-b border-ink/30 pb-3 ${col.legacy ? "text-ink/60" : "text-ink"}`}>
+                    {col.title}
+                  </p>
+                  <ol className="mt-6 flex flex-col items-stretch">
+                    {col.steps.map((step, i) => (
+                      <li key={step} className="flex flex-col items-center">
+                        <span
+                          className={`w-full px-5 py-4 text-center text-[clamp(14px,1.2vw,16px)] ${
+                            col.legacy
+                              ? "border border-ink/15 text-ink/60"
+                              : "border border-ink font-medium text-ink"
+                          }`}
+                        >
+                          {step}
+                        </span>
+                        {i < col.steps.length - 1 && (
+                          <span
+                            aria-hidden="true"
+                            className={`py-2 text-lg leading-none ${col.legacy ? "text-ink/30" : "text-ink"}`}
+                          >
+                            ↓
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

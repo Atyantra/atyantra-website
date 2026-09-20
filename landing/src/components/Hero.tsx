@@ -16,19 +16,10 @@ export default function Hero() {
       id="top"
       className="hero-over min-h-screen supports-[height:100svh]:min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28"
     >
-      <div
-        className={`${CONTAINER} flex flex-col gap-4 sm:flex-row sm:justify-between`}
-      >
+      <div className={CONTAINER}>
         <Reveal delay={120}>
-          <span className={`${LABEL} text-ink/90`}>/ Atyantra Network Ops</span>
-        </Reveal>
-        <Reveal delay={220}>
-          <span className={`flex items-center gap-2 ${LABEL} text-ink/90`}>
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-ink"
-              aria-hidden="true"
-            />
-            TruVigil AI Operations Platform
+          <span className={`${LABEL} text-ink/90`}>
+            Autonomous Network as a Service
           </span>
         </Reveal>
       </div>
@@ -39,9 +30,9 @@ export default function Hero() {
         </Reveal>
         <Reveal delay={280}>
           <h1 className={`max-w-4xl text-ink ${H1}`}>
-            Network Operations,
+            Network Operations
             <br />
-            Rebuilt Around AI.
+            Reimagined with AI
           </h1>
         </Reveal>
         <Reveal delay={380} className="mt-6 max-w-[62ch]">
@@ -53,10 +44,10 @@ export default function Hero() {
         </Reveal>
         <Reveal delay={480} className="mt-8 flex flex-wrap gap-3">
           <a href="#platform" className={BTN_PRIMARY}>
-            Explore TruVigil
+            How it works
           </a>
           <a href="#company" className={BTN_SECONDARY}>
-            Request Technical Demo
+            Read Whitepaper
           </a>
         </Reveal>
       </div>

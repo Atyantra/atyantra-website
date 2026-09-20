@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Hexagon, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Reveal from "./Reveal";
 import { CONTAINER, CTA_TEXT, FOCUS } from "../layout";
 
@@ -72,10 +72,9 @@ export default function Navbar() {
     >
       <div className={`${CONTAINER} flex items-center justify-between py-4`}>
         <Reveal delay={0}>
-          <a href="#top" className={`flex items-center gap-2 ${FOCUS}`}>
-            <Hexagon size={24} strokeWidth={1.5} className="text-ink" />
-            <span className="text-lg sm:text-xl font-medium tracking-tight lowercase text-ink">
-              atyantra
+          <a href="#top" className={`flex items-center ${FOCUS}`}>
+            <span className="text-lg sm:text-xl font-semibold tracking-[0.18em] uppercase text-ink">
+              Atyantra
             </span>
           </a>
         </Reveal>

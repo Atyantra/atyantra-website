@@ -31,10 +31,10 @@ export default function Closing() {
           </Reveal>
           <Reveal delay={300} className="mt-8 flex flex-wrap gap-3">
             <a href="#company" className={BTN_PRIMARY}>
-              Request Technical Demo
+              Read Whitepaper
             </a>
             <a href="#platform" className={BTN_SECONDARY}>
-              Explore TruVigil
+              How it works
             </a>
           </Reveal>
         </div>
@@ -47,17 +47,9 @@ export default function Closing() {
         <div className={CONTAINER}>
           <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
             <div>
-              <span className="text-lg font-medium tracking-tight lowercase text-ink">
-                atyantra
+              <span className="text-lg font-semibold tracking-[0.18em] uppercase text-ink">
+                Atyantra
               </span>
-              <p className="mt-5 max-w-[62ch] text-sm leading-relaxed text-ink/70">
-                <strong className="font-medium text-ink">US HQ:</strong> 3226
-                Spohrs Road, Berkeley Springs, WV 25411
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                <strong className="font-medium text-ink">India Ops:</strong>{" "}
-                Bengaluru, Karnataka
-              </p>
             </div>
             <div className="flex flex-col gap-3">
               <h4 className={HEAD}>Legal &amp; Security</h4>
