@@ -7,7 +7,6 @@ import {
   H2,
   LABEL,
   SECTION_PAD,
-  SUB,
 } from "../layout";
 
 const LINK = `text-[clamp(13px,1.1vw,14px)] text-ink/70 transition-colors duration-300 hover:text-ink ${FOCUS}`;
@@ -20,14 +19,8 @@ export default function Closing() {
         <div className={CONTAINER}>
           <Reveal delay={100}>
             <h2 className={`max-w-3xl text-ink ${H2}`}>
-              Let’s redefine your operations around AI.
+              Let’s redefine your Network operations around AI.
             </h2>
-          </Reveal>
-          <Reveal delay={200} className="mt-5 max-w-[62ch]">
-            <p className={`text-ink/80 ${SUB}`}>
-              Talk to our team about a technical demo scoped to your
-              environment.
-            </p>
           </Reveal>
           <Reveal delay={300} className="mt-8 flex flex-wrap gap-3">
             <a href="#company" className={BTN_PRIMARY}>
@@ -47,7 +40,7 @@ export default function Closing() {
         <div className={CONTAINER}>
           <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
             <div>
-              <span className="text-lg font-semibold tracking-[0.18em] uppercase text-ink">
+              <span className="text-lg font-semibold tracking-[0.23em] uppercase text-ink">
                 Atyantra
               </span>
             </div>

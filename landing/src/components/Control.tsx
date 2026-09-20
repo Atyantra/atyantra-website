@@ -6,7 +6,7 @@ const MODES = [
   {
     tag: "Mode 01",
     title: "Observe",
-    body: "Investigate only — the agent watches and reports. No actions are taken.",
+    body: "The agent watches and reports. No actions are taken.",
     level: 1,
   },
   {
@@ -18,7 +18,7 @@ const MODES = [
   {
     tag: "Mode 03",
     title: "Autonomous",
-    body: "Pre-approved actions execute automatically, inside guardrails your team sets.",
+    body: "Pre-approved actions execute automatically, inside guardrails defined by experts.",
     level: 3,
   },
 ];
@@ -26,17 +26,14 @@ const MODES = [
 const DEPLOYMENTS = [
   {
     tag: "A / Hosted",
-    title: "Hosted / Cloud",
     body: "Multi-tenant cloud environment for fast deployment and ongoing platform updates.",
   },
   {
     tag: "B / On-Prem",
-    title: "On-Premises",
     body: "Private data center deployment via containerized infrastructure inside your boundary.",
   },
   {
     tag: "C / Air-Gapped",
-    title: "Air-Gapped",
     body: "Fully isolated deployment with no external outbound dependencies.",
   },
 ];
@@ -95,10 +92,7 @@ export default function Control() {
               <Reveal key={d.tag} delay={100 + i * 100}>
                 <div className={CARD}>
                   <span className={TAG}>{d.tag}</span>
-                  <h3 className="mt-3 text-[clamp(18px,1.8vw,20px)] font-medium text-ink">
-                    {d.title}
-                  </h3>
-                  <p className="mt-2 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
+                  <p className="mt-3 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
                     {d.body}
                   </p>
                 </div>

@@ -33,7 +33,7 @@ export default function LegalPage({
         <div className={`${CONTAINER} flex items-center justify-between py-4`}>
           <a
             href="/"
-            className={`text-lg font-semibold uppercase tracking-[0.18em] sm:text-xl ${FOCUS}`}
+            className={`text-lg font-semibold uppercase tracking-[0.23em] sm:text-xl ${FOCUS}`}
           >
             Atyantra
           </a>

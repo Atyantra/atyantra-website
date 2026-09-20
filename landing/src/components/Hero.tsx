@@ -15,7 +15,7 @@ export default function Hero() {
       id="top"
       className="hero-over min-h-screen supports-[height:100svh]:min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28"
     >
-      <div className={`${CONTAINER} mt-auto pb-12 md:pb-16`}>
+      <div className={`${CONTAINER} my-auto pb-12 md:pb-16`}>
         <Reveal delay={150} className="mb-5 inline-block">
           <span className={CHIP}>Autonomous Network as a Service</span>
         </Reveal>

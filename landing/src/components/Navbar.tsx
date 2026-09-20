@@ -73,7 +73,7 @@ export default function Navbar() {
       <div className={`${CONTAINER} flex items-center justify-between py-4`}>
         <Reveal delay={0}>
           <a href="#top" className={`flex items-center ${FOCUS}`}>
-            <span className="text-lg sm:text-xl font-semibold tracking-[0.18em] uppercase text-ink">
+            <span className="text-lg sm:text-xl font-semibold tracking-[0.23em] uppercase text-ink">
               Atyantra
             </span>
           </a>
