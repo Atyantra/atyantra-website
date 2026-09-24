@@ -10,7 +10,7 @@ const DISCIPLINES = [
   },
   {
     n: "02",
-    title: "AI Investigation",
+    title: "AI Reasoning",
     body: "When something looks wrong, the AI traces root cause across routing, application and device layers automatically.",
   },
   {
@@ -30,12 +30,12 @@ const LEGACY_FLOW = [
   "Alert",
   "Ticket",
   "Engineer",
-  "Investigation",
+  "Reasoning",
   "CLI",
 ];
 const NEW_FLOW = [
   "Telemetry",
-  "AI Investigation",
+  "AI Reasoning",
   "Root Cause",
   "Validation",
   "Action",
@@ -75,8 +75,11 @@ export default function Operations() {
                 { title: "Legacy Workflow", steps: LEGACY_FLOW, legacy: true },
                 { title: <>Atyantra TruVigil<sup className="text-[0.65em]">TM</sup> Workflow</>, steps: NEW_FLOW, legacy: false },
               ].map((col) => (
-                <div key={col.legacy ? "legacy" : "new"}>
-                  <p className={`${FLOW} border-b border-ink/30 pb-3 ${col.legacy ? "text-ink/60" : "text-ink"}`}>
+                <div
+                  key={col.legacy ? "legacy" : "new"}
+                  className={col.legacy ? "" : "rounded-2xl bg-ink p-6 text-inkfg"}
+                >
+                  <p className={`${FLOW} border-b pb-3 ${col.legacy ? "border-ink/30 text-ink/60" : "border-inkfg/30 text-inkfg"}`}>
                     {col.title}
                   </p>
                   <ol className="mt-6 flex flex-col items-stretch">
@@ -86,7 +89,7 @@ export default function Operations() {
                           className={`w-full px-5 py-4 text-center text-[clamp(14px,1.2vw,16px)] ${
                             col.legacy
                               ? "border border-ink/15 text-ink/60"
-                              : "border border-ink font-medium text-ink"
+                              : "border border-inkfg/40 bg-inkfg/10 font-medium text-inkfg"
                           }`}
                         >
                           {step}
@@ -94,7 +97,7 @@ export default function Operations() {
                         {i < col.steps.length - 1 && (
                           <span
                             aria-hidden="true"
-                            className={`py-2 text-lg leading-none ${col.legacy ? "text-ink/30" : "text-ink"}`}
+                            className={`py-2 text-lg leading-none ${col.legacy ? "text-ink/30" : "text-inkfg"}`}
                           >
                             ↓
                           </span>

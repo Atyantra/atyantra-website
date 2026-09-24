@@ -79,7 +79,7 @@ export default function Navbar() {
           </a>
         </Reveal>
 
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
+        <div className="hidden lg:flex items-center gap-8 xl:gap-10">
           {LINKS.map((link, i) => (
             <Reveal key={link.id} delay={100 + i * 100}>
               <a
@@ -109,7 +109,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className={`rounded-full border border-ink/20 bg-ink/10 p-2 text-ink backdrop-blur-md transition-colors duration-300 hover:bg-ink/15 md:hidden ${FOCUS}`}
+            className={`rounded-full border border-ink/20 bg-ink/10 p-2 text-ink backdrop-blur-md transition-colors duration-300 hover:bg-ink/15 lg:hidden ${FOCUS}`}
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -119,7 +119,7 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="nav-sheet absolute left-4 right-4 top-full mt-2 rounded-[28px] border border-ink/15 bg-ground p-6 shadow-[0_20px_60px_rgba(0,0,0,0.45)] md:hidden"
+          className="nav-sheet absolute left-4 right-4 top-full mt-2 rounded-[28px] border border-ink/15 bg-ground p-6 shadow-[0_20px_60px_rgba(0,0,0,0.45)] lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             {LINKS.map((link) => (

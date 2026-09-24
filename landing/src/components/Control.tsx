@@ -1,6 +1,6 @@
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
-import { CONTAINER, LABEL, SECTION_PAD } from "../layout";
+import { CONTAINER, SECTION_PAD } from "../layout";
 
 const MODES = [
   {
@@ -25,15 +25,15 @@ const MODES = [
 
 const DEPLOYMENTS = [
   {
-    tag: "A / Hosted",
+    tag: "Hosted / Cloud",
     body: "Multi-tenant cloud environment for fast deployment and ongoing platform updates.",
   },
   {
-    tag: "B / On-Prem",
-    body: "Private data center deployment via containerized infrastructure inside your boundary.",
+    tag: "On-Premises",
+    body: "Private data center deployment via containerized infrastructure inside the operation boundary.",
   },
   {
-    tag: "C / Air-Gapped",
+    tag: "Air-Gapped",
     body: "Fully isolated deployment with no external outbound dependencies.",
   },
 ];
@@ -41,7 +41,6 @@ const DEPLOYMENTS = [
 const STACK = `${CONTAINER} flex flex-col gap-12`;
 const CARD =
   "h-full rounded-2xl border border-ink/15 bg-white/50 backdrop-blur-md p-6";
-const TAG = `${LABEL} text-ink/60`;
 
 export default function Control() {
   return (
@@ -56,15 +55,8 @@ export default function Control() {
             {MODES.map((m, i) => (
               <Reveal key={m.tag} delay={100 + i * 100}>
                 <div className={CARD}>
-                  <span className={TAG}>{m.tag}</span>
-                  <h3 className="mt-3 text-[clamp(20px,2vw,24px)] font-medium text-ink">
-                    {m.title}
-                  </h3>
-                  <p className="mt-2 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
-                    {m.body}
-                  </p>
                   <div
-                    className="mt-5 flex gap-1"
+                    className="flex gap-1"
                     role="img"
                     aria-label={`Autonomy level ${m.level} of 3`}
                   >
@@ -77,6 +69,12 @@ export default function Control() {
                       />
                     ))}
                   </div>
+                  <h3 className="mt-3 text-[clamp(20px,2vw,24px)] font-medium text-ink">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
+                    {m.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -86,13 +84,15 @@ export default function Control() {
 
       <section id="deployment" className={SECTION_PAD}>
         <div className={STACK}>
-          <SectionHead label="05 — Deployment" title="Deploy on your terms." />
+          <SectionHead label="05 — Deployment" title="Deployment Models" />
           <div className="grid gap-4 md:grid-cols-3">
             {DEPLOYMENTS.map((d, i) => (
               <Reveal key={d.tag} delay={100 + i * 100}>
                 <div className={CARD}>
-                  <span className={TAG}>{d.tag}</span>
-                  <p className="mt-3 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
+                  <h3 className="text-[clamp(18px,1.8vw,20px)] font-medium text-ink">
+                    {d.tag}
+                  </h3>
+                  <p className="mt-2 text-[clamp(14px,1.2vw,15px)] leading-relaxed text-ink/70">
                     {d.body}
                   </p>
                 </div>
