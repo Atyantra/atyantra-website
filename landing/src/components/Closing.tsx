@@ -38,25 +38,20 @@ export default function Closing() {
         className="border-t border-ink/15 bg-white/60 pt-16 pb-8"
       >
         <div className={CONTAINER}>
-          <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
+          <div className="grid gap-12 md:grid-cols-[3fr_1fr]">
             <div>
               <span className="text-lg font-semibold tracking-[0.23em] uppercase text-ink">
                 Atyantra
               </span>
-            </div>
-            <div className="flex flex-col gap-3">
-              <h4 className={HEAD}>Legal &amp; Security</h4>
-              <a href="/trust" className={LINK}>Trust Center</a>
-              <a href="/privacy" className={LINK}>Zero-Trust Privacy Policy</a>
-              <a href="/terms" className={LINK}>Terms of Service</a>
+              <p className="mt-3 text-sm text-ink/70">India &amp; USA</p>
             </div>
             <div className="flex flex-col gap-3">
               <h4 className={HEAD}>Contact</h4>
-              <a href="mailto:enterprise@atyantra.tech" className={LINK}>
-                Enterprise Sales
+              <a href="/contact/sales" className={LINK}>
+                Sales
               </a>
-              <a href="mailto:ciso@atyantra.tech" className={LINK}>
-                Security Reporting
+              <a href="/contact/security" className={LINK}>
+                Security
               </a>
             </div>
           </div>

@@ -64,13 +64,13 @@ export function TrustCenter() {
         {
           h: "Responsible disclosure",
           p: [
-            "If you believe you have found a security vulnerability in our website or service, please report it to ciso@atyantra.tech with enough detail to reproduce it. Please give us reasonable time to investigate before any public disclosure, and do not access or modify data that is not yours. We will acknowledge good-faith reports and will not pursue legal action against researchers who follow these guidelines.",
+            "If you believe you have found a security vulnerability in our website or service, please report it to ciso@atyantra.io with enough detail to reproduce it. Please give us reasonable time to investigate before any public disclosure, and do not access or modify data that is not yours. We will acknowledge good-faith reports and will not pursue legal action against researchers who follow these guidelines.",
           ],
         },
         {
           h: "Contact",
           p: [
-            "Security team: ciso@atyantra.tech. Enterprise and sales inquiries: enterprise@atyantra.tech.",
+            "Security team: ciso@atyantra.io. Enterprise and sales inquiries: sales@atyantra.io.",
           ],
         },
       ]}
@@ -144,7 +144,7 @@ export function PrivacyPolicy() {
         {
           h: "How to exercise your rights",
           p: [
-            "Email enterprise@atyantra.tech with your request. We may need to verify your identity before acting on it. You may use an authorized agent, and we will respond within the time required by applicable law (generally 45 days). If we deny a request, you may appeal by replying to our response, and you may contact your state attorney general.",
+            "Email sales@atyantra.io with your request. We may need to verify your identity before acting on it. You may use an authorized agent, and we will respond within the time required by applicable law (generally 45 days). If we deny a request, you may appeal by replying to our response, and you may contact your state attorney general.",
           ],
         },
         {
@@ -162,7 +162,7 @@ export function PrivacyPolicy() {
         {
           h: "Contact",
           p: [
-            "Atyantra Technologies LLC. Privacy questions and requests: enterprise@atyantra.tech. Security matters: ciso@atyantra.tech.",
+            "Atyantra Technologies LLC. Privacy questions and requests: sales@atyantra.io. Security matters: ciso@atyantra.io.",
           ],
         },
       ]}
@@ -256,7 +256,7 @@ export function Terms() {
         },
         {
           h: "Contact",
-          p: ["Questions about these Terms: enterprise@atyantra.tech."],
+          p: ["Questions about these Terms: sales@atyantra.io."],
         },
       ]}
     />

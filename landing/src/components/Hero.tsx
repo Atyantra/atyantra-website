@@ -28,7 +28,7 @@ export default function Hero() {
         </Reveal>
         <Reveal delay={380} className="mt-6 max-w-[62ch]">
           <p className={`text-ink/85 ${SUB}`}>
-            AI agents continuously observe, investigate and operate your
+            AI agents continuously observe, reason and operate your
             network — backed by deterministic automation, engineering
             guardrails and human control.
           </p>
